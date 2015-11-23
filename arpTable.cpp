@@ -27,6 +27,7 @@ void arpTable::addItem(int time_sent, string ip, string mac){
 	for(int x=0; x<data.size(); x++){
 		if(data[x].second.first == ip){
 			data[x].second.second = mac;
+			data[x].first = 10;
 			return;
 		}
 	}
@@ -50,7 +51,7 @@ void arpTable::tick(){
 		ptr = deviceList[x].poison();
 		usleep(1000000);
 		if(ptr != NULL) {
-			addItem(4, ptr->getSenderProtocolAddress(), 
+			addItem(10, ptr->getSenderProtocolAddress(), 
 						ptr->getSenderHardwareAddress());
 		}
 	}
@@ -99,7 +100,7 @@ void arpTable::sendRequest(string protocol){
 		ptr = deviceList[x].handleMessage(newMessage);
 		usleep(1000000);
 		if(ptr != NULL) {
-			addItem(4, ptr->getSenderProtocolAddress(), 
+			addItem(10, ptr->getSenderProtocolAddress(), 
 						ptr->getSenderHardwareAddress());
 			return;
 		}

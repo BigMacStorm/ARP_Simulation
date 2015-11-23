@@ -46,11 +46,11 @@ using namespace std;
 int main(int argc, char *argv[]){
 	srand(time(NULL));
 	arpTable table;
-	//create some random val between 2 and 5
-	int amount = rand()%3 + 3;
+	//create some random val between 2 and 4
+	int amount = rand()%3 + 2;
 	int temp;
 	bool demoPoison = false;
-	if(argc > 0) demoPoison = true;
+	if(argc > 1) demoPoison = true;
 
 
 	cout << endl << endl << "SYS: Simulation starting..." << endl;
